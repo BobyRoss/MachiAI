@@ -1,11 +1,19 @@
-memory = {}
+import json
+try:
+    with open("memory.json", "r") as f:
+        memory = json.load(f)
+except FileNotFoundError:
+    memory = {}
 
 while True:
     user_input = input("You: ")
 
     if user_input.lower() == "bye":
         print("AI: Bye!")
+        with open("memory.json", "w") as f:
+            json.dump(memory, f)
         break
+
     if user_input in memory:
         print("AI:", memory[user_input])
     else:

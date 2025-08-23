@@ -22,9 +22,11 @@ while True:
             json.dump(memory, f)
         break
 
-    if user_input in memory:
-        print("AI:", memory[user_input])
+    norm_input = normalize(user_input)
+
+    if norm_input in memory:
+        print("AI:", memory[norm_input])
     else:
         reply = input("I dont know what to say. how should I respond?")
-        memory[user_input] = reply
+        memory[norm_input] = reply
         print("AI: Got it! I will remember that.")

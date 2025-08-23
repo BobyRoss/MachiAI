@@ -1,4 +1,11 @@
 import json
+import nltk
+from nltk.corpus import wordnet
+
+nltk.download("wordnet", quiet=True)
+nltk.download("omw-1.4", quiet=True)
+
+
 try:
     with open("memory.json", "r") as f:
         memory = json.load(f)
@@ -13,18 +20,11 @@ def normalize(text):
     return text.strip()
 
 
-synonyms = {
-    "hi":"hello",
-    "hey":"hello",
-    "whats up":"hello",
-    "goodbye":"goodbye",
-    "see ya":"goodbye",
-    "adios":"goodbye",
-}
-
-
-def map_synonym(word):
-    return synonyms.get(word, word)
+def get_synonym(word):
+    synonymset = wordnet.synsets(word)
+    if synonymset:
+        return synonymset[0].lemmas()[0].name().lower()
+    return word
 
 
 while True:
@@ -38,7 +38,7 @@ while True:
 
     norm_input = normalize(user_input)
 
-    norm_input = map_synonym(norm_input)
+    norm_input = get_synonym(norm_input)
 
     if norm_input in memory:
         print("AI:", memory[norm_input])

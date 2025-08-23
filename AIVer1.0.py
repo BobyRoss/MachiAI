@@ -8,9 +8,23 @@ except FileNotFoundError:
 
 def normalize(text):
     tet = text.lower()
-    for p in ["!", ".", "?", ","]:
+    for p in ["!", ".", "?", ",", "'"]:
         text = text.replace(p, "")
     return text.strip()
+
+
+synonyms = {
+    "hi":"hello",
+    "hey":"hello",
+    "whats up":"hello",
+    "goodbye":"goodbye",
+    "see ya":"goodbye",
+    "adios":"goodbye",
+}
+
+
+def map_synonym(word):
+    return synonyms.get(word, word)
 
 
 while True:
@@ -23,6 +37,8 @@ while True:
         break
 
     norm_input = normalize(user_input)
+
+    norm_input = map_synonym(norm_input)
 
     if norm_input in memory:
         print("AI:", memory[norm_input])

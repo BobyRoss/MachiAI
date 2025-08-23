@@ -5,6 +5,14 @@ try:
 except FileNotFoundError:
     memory = {}
 
+
+def normalize(text):
+    tet = text.lower()
+    for p in ["!", ".", "?", ","]:
+        text = text.replace(p, "")
+    return text.strip()
+
+
 while True:
     user_input = input("You: ")
 

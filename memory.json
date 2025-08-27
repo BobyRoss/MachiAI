@@ -1,1 +1,30 @@
-{"hello": "what is up", "how are you doing": " heeeeelllloooooo", "what are you doing": " i am reading books", "whats up": " nothing much", "whats good": "things", "dogs": "cats", "": "bye"}
+[
+  {
+    "example": "hello",
+    "response": "Hi!"
+  },
+  {
+    "example": "goodbye",
+    "response": "Bye!"
+  },
+  {
+    "example": "tell me a joke",
+    "response": "Why did the developer go broke? Because they used up all their cache."
+  },
+  {
+    "example": "halo",
+    "response": "thats a game"
+  },
+  {
+    "example": "apple",
+    "response": "fruits, nice"
+  },
+  {
+    "example": "pinapple",
+    "response": "yellow fruit"
+  },
+  {
+    "example": "banana",
+    "response": "yellow again"
+  }
+]
